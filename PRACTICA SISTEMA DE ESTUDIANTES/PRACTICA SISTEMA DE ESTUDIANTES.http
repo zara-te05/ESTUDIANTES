@@ -1,0 +1,6 @@
+@PRACTICA_SISTEMA_DE_ESTUDIANTES_HostAddress = http://localhost:5164
+
+GET {{PRACTICA_SISTEMA_DE_ESTUDIANTES_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
