@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Create or Edit";
+}
+@model PRUEBA.Models.Student;
+
+<div class="text-center">
+    <h1 class="display-4">On this page you can create and edit students</h1>
+</div>
+
+<form asp-action="CreateEditStudentsForm" asp-controller="Home">
+    <label>Id from the Student</label>
+    <input class="form-control" type="number" placeholder="0" asp-for="id_alumno"/>
+    
+    <label class="mt-4">All Name</label>
+    <input class="form-control" type="text" placeholder="Juan" asp-for="name"/>
+    
+    <label class="mt-4">School Name</label>
+    <input class="form-control" type="text" placeholder="CBTIS" asp-for="school_name"/>
+    
+    <label class="mt-4">Age</label>
+    <input class="form-control" type="number" placeholder="15" asp-for="age"/>
+
+    <button class="btn btn-primary mt-4" type="submit">Ok</button>
+</form>

@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+@model List<APP.Models.Estudiante>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Alumnos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <nav class="bg-blue-600 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">Sistema Escolar</h1>
+            <div class="space-x-4">
+                <button onclick="mostrar('listado')" class="text-white hover:bg-blue-700 px-3 py-2 rounded transition">Listar</button>
+                <button onclick="mostrar('crear')" class="bg-white text-blue-600 hover:bg-gray-100 px-4 py-2 rounded font-semibold transition shadow">Registrar Nuevo</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-10 p-6">
+        
+        <div id="seccion-listado" class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Alumnos Registrados</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-gray-800 text-white">
+                        <tr>
+                            <th class="py-3 px-4 text-left uppercase font-semibold text-sm">Nombre del Estudiante</th>
+                            <th class="py-3 px-4 text-left uppercase font-semibold text-sm">Escuela</th>
+                            <th class="py-3 px-4 text-left uppercase font-semibold text-sm">Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        @foreach (var alumno in Model)
+                        {
+                            <tr class="border-b hover:bg-gray-50 transition">
+                                <td class="py-3 px-4 font-medium">@alumno.nombre_estudiante</td>
+                                <td class="py-3 px-4">@alumno.nombre_escuela</td>
+                                <td class="py-3 px-4">@alumno.edad</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="seccion-crear" style="display:none;" class="max-w-lg mx-auto bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Registrar Alumno</h2>
+            
+            <form action="/Alumno/Crear" method="post" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">Nombre Completo</label>
+                    <input type="text" name="nombre_estudiante" required
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                           placeholder="Ej. Juan Pérez">
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">Institución</label>
+                    <input type="text" name="nombre_escuela" required
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                           placeholder="Ej. ITS Lerdo">
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">Edad</label>
+                    <input type="number" name="edad" required
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit"
+                            class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 shadow-lg transition">
+                        Guardar en Base de Datos
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <script>
+        function mostrar(id) {
+        const listado = document.getElementById('seccion-listado');
+        const crear = document.getElementById('seccion-crear');
+
+            if (id === 'listado') {
+                listado.style.display = 'block';
+                crear.style.display = 'none';
+            } 
+            else {
+                listado.style.display = 'none';
+                crear.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

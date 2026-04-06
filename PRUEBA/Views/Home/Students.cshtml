@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Students";
+}
+
+@model List<Student>
+
+<div class="container mt-4">
+    <h1 class="display-4 text-center">Section for the students</h1>
+    <p class="text-center text-muted">In this section you will find steps to add a student in a database (CRUD).</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>School Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr> 
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.id_alumno</td>
+                        <td>@student.name</td>
+                        <td>@student.school_name</td>
+                        <td>@student.age</td>
+                        <td>
+                            <a asp-action="CreateAndEditStudent" asp-route-id="@student.id_alumno">Edit</a>
+                            <a asp-action="DeleteStudent" asp-rout-id="@student.id_alumno">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 

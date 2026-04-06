@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="PRACTICA SISTEMA DE ESTUDIANTES/PRACTICA SISTEMA DE ESTUDIANTES.csproj" />
+  <Project Path="Business/Business.csproj" Id="f49efcee-2924-4cf2-9200-e4d4e602f958" />
+  <Project Path="PRUEBA/PRUEBA.csproj" Id="221e5b62-842d-401f-a573-46b6f46c4193" />
 </Solution>
